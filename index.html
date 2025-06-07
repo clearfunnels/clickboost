@@ -3,119 +3,120 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Claim Your Free Reward Before Time Runs Out!</title>
+<title>Quick 3-Minute Survey - Limited Spots</title>
 <style>
   body {
-    font-family: 'Arial Black', Arial, sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: #fff;
-    margin: 0; padding: 0;
+    margin: 0; 
+    background: #f0f4f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
     display: flex;
-    flex-direction: column;
+    height: 100vh;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    padding: 20px;
   }
   .container {
-    background: #0d2c54;
-    padding: 35px 30px;
-    max-width: 420px;
-    width: 95%;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    background: #fff;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     text-align: center;
   }
   h1 {
-    font-size: 28px;
+    font-weight: 700;
     margin-bottom: 15px;
-    letter-spacing: 1.1px;
+    font-size: 1.8rem;
+    color: #34495e;
   }
   p {
-    font-size: 17px;
-    line-height: 1.5;
+    font-size: 1.05rem;
     margin-bottom: 30px;
-    opacity: 0.9;
+    line-height: 1.4;
+    color: #4a6274;
   }
-  #timer {
-    font-weight: 900;
-    font-size: 50px;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-    color: #ffbb00;
-    text-shadow: 0 0 8px #ffbb00;
-  }
-  .spots {
+  .countdown {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 2rem;
     margin-bottom: 25px;
-    color: #ffd966;
+    color: #e67e22;
   }
   button {
-    background: #ffbb00;
+    background: #2980b9;
+    color: white;
     border: none;
-    padding: 16px 0;
+    padding: 14px 0;
     width: 100%;
-    font-size: 20px;
-    font-weight: 900;
-    color: #0d2c54;
-    border-radius: 10px;
+    font-size: 1.25rem;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    transition: background-color 0.3s ease;
+    user-select: none;
   }
   button:hover {
-    background: #e6a800;
+    background: #1c5980;
   }
-  @media (max-width: 480px) {
-    h1 { font-size: 22px; }
-    #timer { font-size: 38px; }
-    button { font-size: 18px; }
+  .footer-note {
+    font-size: 0.85rem;
+    color: #95a5a6;
+    margin-top: 20px;
   }
 </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🔥 Claim Your FREE Gift Now!</h1>
-    <p>You're just seconds away from grabbing an exclusive reward — <strong>only 100 spots available</strong>. Don’t miss out!</p>
-    <div id="timer">10:00</div>
-    <div class="spots">Remaining spots: <span id="spots-left">100</span></div>
-    <button id="startBtn">Get My Reward</button>
-  </div>
+<div class="container">
+  <h1>Help us improve your experience — quick 3-minute survey!</h1>
+  <p>We’re looking for a few people to share their opinion.<br />
+  Only <span class="countdown" id="countdown">31</span> spots left — don’t miss out!<br />
+  Your answers are 100% confidential.</p>
+  <button id="cta-btn" onclick="startSurvey()">Start Survey</button>
+  <div class="footer-note">*Limited spots available. Offer ends soon.</div>
+</div>
 
 <script>
-  let timeLeft = 600; // 10 minutes
-  const timerEl = document.getElementById('timer');
-  const spotsEl = document.getElementById('spots-left');
-  const startBtn = document.getElementById('startBtn');
+  // Countdown spots logic with variable timing
+  let spots = 31;
+  const countdownEl = document.getElementById('countdown');
+  const ctaBtn = document.getElementById('cta-btn');
 
-  const interval = setInterval(() => {
-    if(timeLeft <= 0) {
-      clearInterval(interval);
-      timerEl.textContent = "Offer expired";
-      startBtn.disabled = true;
-      startBtn.style.backgroundColor = "#555";
-      startBtn.textContent = "Offer Expired";
-      return;
+  const intervals = [
+    5000, 5000, 15000, 15000, 20000, 120000, 180000, 300000, 300000, 300000,
+    300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000,
+    300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000, 300000,
+    30000
+  ];
+
+  let intervalIndex = 0;
+
+  function updateCountdown() {
+    if (spots > 1) {
+      spots--;
+      countdownEl.textContent = spots;
+      let delay = intervals[intervalIndex] || 5000;
+      intervalIndex++;
+      setTimeout(updateCountdown, delay);
+    } else {
+      countdownEl.textContent = '1';
+      setTimeout(() => {
+        countdownEl.textContent = 'Sorry, offer expired';
+        ctaBtn.disabled = true;
+        ctaBtn.style.backgroundColor = '#bdc3c7';
+        ctaBtn.style.cursor = 'not-allowed';
+        ctaBtn.textContent = 'Offer Expired';
+      }, 30000); // 30 seconds on 1 spot
     }
-    let minutes = Math.floor(timeLeft / 60);
-    let seconds = timeLeft % 60;
-    timerEl.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-    timeLeft--;
-  }, 1000);
+  }
 
-  let spots = 100;
-  setInterval(() => {
-    if(spots > 0) {
-      spots -= Math.floor(Math.random() * 3) + 1;
-      if(spots < 0) spots = 0;
-      spotsEl.textContent = spots;
-    }
-  }, 20000);
+  updateCountdown();
 
-  startBtn.addEventListener('click', () => {
-    window.location.href = 'https://your-cpa-offer-link.com'; // Replace with your CPA link
-  });
+  // Replace this function with your CPA redirect logic
+  function startSurvey() {
+    if (ctaBtn.disabled) return;
+    // Example redirect, change to your CPA link or geo-switch logic
+    window.location.href = 'https://your-cpa-offer-link.com';
+  }
 </script>
 </body>
 </html>
