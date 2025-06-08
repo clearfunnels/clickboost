@@ -15,7 +15,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      padding-bottom: 50px; /* increased space for footer */
+      padding-bottom: 50px;
       box-sizing: border-box;
     }
 
@@ -29,6 +29,14 @@
       text-align: center;
       position: relative;
       z-index: 1;
+    }
+
+    .vsmart-logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #10b981;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
     }
 
     h1 {
@@ -90,13 +98,12 @@
       color: #22c55e;
     }
 
-    /* Fixed bottom bar for policies */
     .policy-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      background: #1b1e24; /* solid dark bg */
+      background: #1b1e24;
       color: #eee;
       font-size: 0.75rem;
       text-align: center;
@@ -105,7 +112,7 @@
       display: flex;
       justify-content: center;
       gap: 14px;
-      z-index: 999999; /* highest z-index */
+      z-index: 999999;
       box-sizing: border-box;
       font-weight: 500;
       user-select: none;
@@ -139,6 +146,7 @@
 </head>
 <body>
   <div class="container">
+    <div class="vsmart-logo">Vsmart</div>
     <h1>Verifying eligibility...</h1>
     <div class="status" id="status">Matching your session with live rewards database...</div>
     <div class="countdown" id="countdown">Verifying...</div>
@@ -153,7 +161,6 @@
     <div class="footer-note">* Limited access. Reward pool resets in 24 hours.</div>
   </div>
 
-  <!-- Footer policy bar -->
   <div class="policy-bar">
     <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> |
     <a href="/terms.html" target="_blank" rel="noopener noreferrer">Terms of Use</a> |
@@ -165,7 +172,7 @@
     let viewers = 143;
     setInterval(() => {
       viewers += Math.floor(Math.random() * 3 - 1);
-      if (viewers < 130) viewers = 130; // keep viewers realistic
+      if (viewers < 130) viewers = 130;
       document.getElementById("viewers").textContent = "Live viewers: " + viewers;
     }, 6000);
 
@@ -183,7 +190,7 @@
     let i = 0;
 
     function redirectToSmartLink() {
-      window.location.href = "https://doctoredits.com/1815467/vsmart"; // YOUR CPAGrip smart link - change if needed
+      window.location.href = "https://doctoredits.com/1815467/vsmart";
     }
 
     function runStep() {
@@ -195,12 +202,9 @@
         countdown.textContent = "✅ VERIFIED";
         btn.disabled = false;
         btn.textContent = "Start Session";
-
-        // Auto redirect after 5 seconds (changed from 3)
         setTimeout(() => {
           redirectToSmartLink();
         }, 5000);
-
         btn.onclick = () => {
           redirectToSmartLink();
         };
