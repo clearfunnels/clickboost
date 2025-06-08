@@ -22,8 +22,13 @@
 <h1>Redirecting you to the survey… please wait.</h1>
 <div class="spinner"></div>
 <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const clickid = urlParams.get("clickid");
+  const baseUrl = "https://doctoredits.com/1815467/vsmart";
+  const redirectUrl = clickid ? `${baseUrl}?clickid=${clickid}` : baseUrl;
+
   setTimeout(() => {
-    window.location.href = "https://doctoredits.com/1815467/vsmart";
+    window.location.href = redirectUrl;
   }, 3000);
 </script>
 </body>
