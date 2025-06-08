@@ -109,7 +109,6 @@
       document.getElementById("viewers").textContent = "Live viewers: " + viewers;
     }, 6000);
 
-    // Simulated verification steps
     const status = document.getElementById("status");
     const countdown = document.getElementById("countdown");
     const btn = document.getElementById("startBtn");
@@ -132,7 +131,8 @@
         countdown.textContent = "✅ VERIFIED";
         btn.disabled = false;
         btn.onclick = () => {
-          window.location.href = "https://your-cpa-offer.com"; // change this
+          // Delay redirect with spinner page
+          window.location.href = "redirect.html";
         };
       }
     }
