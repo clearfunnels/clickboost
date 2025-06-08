@@ -11,13 +11,33 @@
       background: #0f1115;
       font-family: 'Inter', sans-serif;
       color: #eaeaea;
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding-bottom: 50px;
-      box-sizing: border-box;
       flex-direction: column;
+      box-sizing: border-box;
+      padding-top: 70px; /* for fixed header */
+      padding-bottom: 50px; /* for fixed footer */
+    }
+
+    /* Fixed header with logo */
+    .vsmart-logo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #1b1e24;
+      color: #10b981;
+      font-size: 2.8rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 1.2px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      z-index: 10000;
+      user-select: none;
+      text-shadow: 0 0 12px #10b981cc;
     }
 
     .container {
@@ -28,17 +48,10 @@
       width: 90%;
       max-width: 420px;
       text-align: center;
+      margin: auto;
+      flex-grow: 1;
       position: relative;
       z-index: 1;
-    }
-
-    .vsmart-logo {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #10b981;
-      margin-bottom: 18px;
-      letter-spacing: 1.2px;
-      text-shadow: 0 0 8px #10b98188;
     }
 
     h1 {
@@ -100,56 +113,58 @@
       color: #22c55e;
     }
 
-    /* Policy bar repositioned to just below container */
+    /* Policy bar fixed at bottom */
     .policy-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       background: #1b1e24;
       color: #eee;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       text-align: center;
-      padding: 8px 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      padding: 10px 15px;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.9);
       display: flex;
       justify-content: center;
-      gap: 14px;
-      z-index: 999999;
+      gap: 16px;
       box-sizing: border-box;
-      font-weight: 500;
+      font-weight: 600;
       user-select: none;
-      width: 90%;
-      max-width: 420px;
-      margin-top: 16px;
-      border-radius: 0 0 12px 12px;
+      z-index: 10000;
+      flex-wrap: wrap;
     }
 
     .policy-bar a {
-      color: #eee;
+      color: #10b981;
       text-decoration: none;
-      padding: 3px 7px;
-      border-radius: 4px;
-      transition: background-color 0.2s ease;
-      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 5px;
+      transition: background-color 0.25s ease;
+      font-weight: 700;
     }
 
     .policy-bar a:hover {
-      background-color: #10b981;
+      background-color: #059669;
       color: #fff;
     }
 
     @media (max-width: 480px) {
       .policy-bar {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         gap: 10px;
-        padding: 7px 8px;
+        padding: 8px 10px;
       }
       .policy-bar a {
-        padding: 2px 5px;
+        padding: 3px 6px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="vsmart-logo">Vsmart</div>
+
   <div class="container">
-    <div class="vsmart-logo">Vsmart</div>
     <h1>Verifying eligibility...</h1>
     <div class="status" id="status">Matching your session with live rewards database...</div>
     <div class="countdown" id="countdown">Verifying...</div>
