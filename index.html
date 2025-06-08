@@ -17,6 +17,7 @@
       height: 100vh;
       padding-bottom: 50px;
       box-sizing: border-box;
+      flex-direction: column;
     }
 
     .container {
@@ -32,11 +33,12 @@
     }
 
     .vsmart-logo {
-      font-size: 1.4rem;
-      font-weight: 700;
+      font-size: 2.2rem;
+      font-weight: 800;
       color: #10b981;
       margin-bottom: 18px;
-      letter-spacing: 0.5px;
+      letter-spacing: 1.2px;
+      text-shadow: 0 0 8px #10b98188;
     }
 
     h1 {
@@ -98,17 +100,14 @@
       color: #22c55e;
     }
 
+    /* Policy bar repositioned to just below container */
     .policy-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
       background: #1b1e24;
       color: #eee;
       font-size: 0.75rem;
       text-align: center;
       padding: 8px 12px;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.8);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
       display: flex;
       justify-content: center;
       gap: 14px;
@@ -116,6 +115,10 @@
       box-sizing: border-box;
       font-weight: 500;
       user-select: none;
+      width: 90%;
+      max-width: 420px;
+      margin-top: 16px;
+      border-radius: 0 0 12px 12px;
     }
 
     .policy-bar a {
