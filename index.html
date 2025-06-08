@@ -15,7 +15,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      padding-bottom: 40px; /* space for fixed bottom bar */
+      padding-bottom: 50px; /* increased space for footer */
       box-sizing: border-box;
     }
 
@@ -96,25 +96,28 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(27, 30, 36, 0.85);
-      color: #aaa;
-      font-size: 0.7rem;
+      background: rgba(27, 30, 36, 0.95);
+      color: #eee; /* changed from gray to near white */
+      font-size: 0.75rem;
       text-align: center;
-      padding: 6px 8px;
+      padding: 8px 12px;
       backdrop-filter: saturate(180%) blur(8px);
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
       z-index: 9999;
       box-sizing: border-box;
+      font-weight: 500;
+      user-select: none;
     }
 
     .policy-bar a {
-      color: #9ca3af;
+      color: #eee; /* changed from gray */
       text-decoration: none;
-      padding: 2px 6px;
+      padding: 3px 7px;
       border-radius: 4px;
       transition: background-color 0.2s ease;
+      font-weight: 600;
     }
 
     .policy-bar a:hover {
@@ -124,12 +127,12 @@
 
     @media (max-width: 480px) {
       .policy-bar {
-        font-size: 0.65rem;
-        gap: 8px;
-        padding: 5px 6px;
+        font-size: 0.7rem;
+        gap: 10px;
+        padding: 7px 8px;
       }
       .policy-bar a {
-        padding: 1px 4px;
+        padding: 2px 5px;
       }
     }
   </style>
@@ -193,10 +196,10 @@
         btn.disabled = false;
         btn.textContent = "Start Session";
 
-        // Auto redirect after 3 seconds
+        // Auto redirect after 5 seconds (changed from 3)
         setTimeout(() => {
           redirectToSmartLink();
-        }, 3000);
+        }, 5000);
 
         btn.onclick = () => {
           redirectToSmartLink();
