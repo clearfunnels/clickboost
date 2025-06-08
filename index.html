@@ -96,23 +96,23 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(27, 30, 36, 0.95);
-      color: #eee; /* changed from gray to near white */
+      background: #1b1e24; /* solid dark bg */
+      color: #eee;
       font-size: 0.75rem;
       text-align: center;
       padding: 8px 12px;
-      backdrop-filter: saturate(180%) blur(8px);
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.8);
       display: flex;
       justify-content: center;
       gap: 14px;
-      z-index: 9999;
+      z-index: 999999; /* highest z-index */
       box-sizing: border-box;
       font-weight: 500;
       user-select: none;
     }
 
     .policy-bar a {
-      color: #eee; /* changed from gray */
+      color: #eee;
       text-decoration: none;
       padding: 3px 7px;
       border-radius: 4px;
