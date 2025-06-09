@@ -15,10 +15,9 @@
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
-      padding-top: 70px; /* for fixed header */
-      padding-bottom: 50px; /* for fixed footer */
+      padding-top: 70px;
+      padding-bottom: 50px;
     }
-    /* Fixed header with logo */
     .vsmart-logo {
       position: fixed;
       top: 0;
@@ -101,7 +100,6 @@
       content: "✓ ";
       color: #22c55e;
     }
-    /* Policy bar fixed at bottom */
     .policy-bar {
       position: fixed;
       bottom: 0;
@@ -172,9 +170,10 @@
   </div>
 
   <script>
+    // Fake live viewers counter fluctuating subtly
     let viewers = 143;
     setInterval(() => {
-      viewers += Math.floor(Math.random() * 3 - 1);
+      viewers += Math.floor(Math.random() * 3 - 1); // -1, 0 or +1
       if (viewers < 130) viewers = 130;
       document.getElementById("viewers").textContent = "Live viewers: " + viewers;
     }, 6000);
@@ -184,10 +183,9 @@
     const btn = document.getElementById("startBtn");
 
     const steps = [
-      { text: "Checking IP reputation...", delay: 1800 },
-      { text: "Analyzing device fingerprint...", delay: 2200 },
-      { text: "Verifying region and eligibility...", delay: 2600 },
-      { text: "Slot confirmed. Session unlocked.", delay: 1600 }
+      { text: "Checking IP reputation...", delay: 2000 },
+      { text: "Analyzing device fingerprint...", delay: 3000 },
+      { text: "Verifying region and eligibility...", delay: 3000 },
     ];
 
     let i = 0;
@@ -214,16 +212,11 @@
         countdown.textContent = "✅ VERIFIED";
         btn.disabled = false;
         btn.textContent = "Start Session";
-        setTimeout(() => {
-          redirectToSmartLink();
-        }, 5000);
-        btn.onclick = () => {
-          redirectToSmartLink();
-        };
+        btn.onclick = () => redirectToSmartLink();
       }
     }
 
-    setTimeout(runStep, 1200);
+    setTimeout(runStep, 500);
   </script>
 
   <!-- BeMob Landing Pixel Script -->
@@ -243,10 +236,8 @@
       s.src = "https://ul3fk.bemobtrcks.com/landing/f6396f29-983b-441a-bc1a-12514352f04f?" +
         "clickId=" + encodeURIComponent(getQueryParam('clickId') || '') + "&" +
         "cost=" + encodeURIComponent(getQueryParam('cost') || '') + "&" +
-        "referrer=" + encodeURIComponent(getQueryParam('referrer') || '') + "&" +
-        window.location.search.substring(1);
-      var firstScript = document.getElementsByTagName("script")[0];
-      firstScript.parentNode.insertBefore(s, firstScript);
+        "referrer=" + encodeURIComponent(getQueryParam('referrer') || '');
+      document.head.appendChild(s);
     })();
   </script>
 </body>
