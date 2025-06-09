@@ -100,46 +100,9 @@
       content: "✓ ";
       color: #22c55e;
     }
-    .policy-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #1b1e24;
-      color: #eee;
-      font-size: 0.85rem;
-      text-align: center;
-      padding: 10px 15px;
-      box-shadow: 0 -2px 12px rgba(0,0,0,0.9);
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      box-sizing: border-box;
-      font-weight: 600;
-      user-select: none;
-      z-index: 10000;
-      flex-wrap: wrap;
-    }
-    .policy-bar a {
-      color: #10b981;
-      text-decoration: none;
-      padding: 4px 8px;
-      border-radius: 5px;
-      transition: background-color 0.25s ease;
-      font-weight: 700;
-    }
-    .policy-bar a:hover {
-      background-color: #059669;
-      color: #fff;
-    }
     @media (max-width: 480px) {
-      .policy-bar {
-        font-size: 0.75rem;
-        gap: 10px;
-        padding: 8px 10px;
-      }
-      .policy-bar a {
-        padding: 3px 6px;
+      .container {
+        padding: 20px 15px;
       }
     }
   </style>
@@ -162,15 +125,18 @@
     <div class="footer-note">* Limited access. Reward pool resets in 24 hours.</div>
   </div>
 
-  <div class="policy-bar">
-    <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> |
-    <a href="/terms.html" target="_blank" rel="noopener noreferrer">Terms of Use</a> |
-    <a href="mailto:support@vsmart.quest">Contact Support</a> |
-    <span>© 2025 VSmart.quest — Trusted by 10,000+ users this month</span>
+  <div style="background: #1b1e24; padding: 20px; margin-top: 30px; border-radius: 12px; width: 90%; max-width: 480px; text-align: center; margin-left: auto; margin-right: auto;">
+    <p style="margin: 0 0 10px 0; font-weight: bold; color: #facc15; font-size: 0.95rem;">
+      Estimated time: 30–35 minutes to access reward
+    </p>
+    <div style="font-size: 0.85rem; color: #94a3b8;">
+      <a href="/privacy.html" target="_blank" style="color: #10b981; margin: 0 10px;">Privacy</a> |
+      <a href="/terms.html" target="_blank" style="color: #10b981; margin: 0 10px;">Terms</a> |
+      <a href="mailto:support@vsmart.quest" style="color: #10b981; margin: 0 10px;">Contact</a>
+    </div>
   </div>
 
   <script>
-    // Fake live viewers counter fluctuating subtly
     let viewers = 143;
     setInterval(() => {
       viewers += Math.floor(Math.random() * 3 - 1); // -1, 0 or +1
@@ -193,12 +159,10 @@
     function redirectToSmartLink() {
       const baseUrl = "https://doctoredits.com/1815467/vsmart";
       const params = new URLSearchParams(window.location.search);
-
       let newUrl = baseUrl + "?";
       if (params.has('clickId')) newUrl += "clickId=" + encodeURIComponent(params.get('clickId')) + "&";
       if (params.has('cost')) newUrl += "cost=" + encodeURIComponent(params.get('cost')) + "&";
       if (params.has('referrer')) newUrl += "referrer=" + encodeURIComponent(params.get('referrer')) + "&";
-
       newUrl = newUrl.replace(/&$/, "");
       window.location.href = newUrl;
     }
